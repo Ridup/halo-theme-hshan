@@ -1,11 +1,8 @@
 <#include "module/macro.ftl">
 
 <@layout title="${keyword!} - 搜索结果 - ${options.blog_title!}" keywords="${options.seo_keywords!}" description="${options.seo_description!}">
-    <body class="search-template">
     <div id="page" class="site">
-
-        <#include "module/header.ftl">
-        <main class="site-main">
+        <main class="site-main" id="main">
             <div class="site-content">
                 <!-- 封面 -->
                 <header class="bg-cover page-header">
@@ -70,7 +67,6 @@
 
             </div>
         </main>
-        <#include "module/footer.ftl">
+        <#include "module/common.ftl">
     </div>
-    </body>
 </@layout>

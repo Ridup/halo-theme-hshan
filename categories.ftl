@@ -1,9 +1,8 @@
 <#include "module/macro.ftl">
 <@layout title="${settings.categories_title!'分类列表'} | ${options.blog_title!}" keywords="${options.seo_keywords!}" description="${options.seo_description!}">
-    <body class="category-template">
     <div id="page" class="site">
-        <#include "module/header.ftl">
-        <main class="site-main">
+
+        <main class="site-main" id="main">
             <div class="site-content">
                 <header class="bg-cover page-header">
                     <#if settings.categories_patternimg?? && settings.categories_patternimg!=''>
@@ -41,8 +40,6 @@
 <#--                <#include "module/pagination.ftl">-->
             </div>
         </main>
-
-        <#include "module/footer.ftl">
+        <#include "module/common.ftl">
     </div>
-    </body>
 </@layout>

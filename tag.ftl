@@ -1,11 +1,9 @@
 <#include "module/macro.ftl">
 <@layout title="标签：${tag.name} | ${options.blog_title!}" keywords="${options.seo_keywords!}" description="${options.seo_description!}">
-    <body class="tag-template">
+
     <div id="page" class="site">
 
-        <#include "module/header.ftl">
-
-        <main class="site-main">
+        <main class="site-main" id="main">
             <div class="site-content">
 
                 <header class="bg-cover page-header">
@@ -41,7 +39,8 @@
                             <a href="${context!}">PAGE ${posts.number + 1} OF ${posts.totalPages!} </a>
                         </span>
                         <#if posts.hasPrevious()>
-                            <a class="newer-posts arrow-left" href="${context!}/tags/${tag.slugName!}/page/${posts.number}"><span
+                            <a class="newer-posts arrow-left"
+                               href="${context!}/tags/${tag.slugName!}/page/${posts.number}"><span
                                         class="screen-reader-text"></span></a>
                         </#if>
                         <#if posts.hasNext()>
@@ -53,8 +52,6 @@
                 </nav>
             </div>
         </main>
-
-        <#include "module/footer.ftl">
+        <#include "module/common.ftl">
     </div>
-    </body>
 </@layout>

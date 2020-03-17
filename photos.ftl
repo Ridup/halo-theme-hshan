@@ -1,11 +1,7 @@
 <#include "module/macro.ftl">
 <@layout title="${settings.photos_title!'相册'} | ${options.blog_title!}" keywords="${options.seo_keywords!}" description="${options.seo_description!}">
-    <body class="photo-template">
-    <div id="page" class="site">
-
-        <#include "module/header.ftl">
-
-        <main class="site-main">
+    <div id="page" class="site photo-template">
+        <main class="site-main" id="main">
             <div class="site-content">
                 <header class="bg-cover page-header">
                     <#if settings.photos_patternimg?? && settings.photos_patternimg!=''>
@@ -33,8 +29,8 @@
                             <div class="justified-gallery">
                                 <#list item.photos as photo>
                                     <a class="gallery-item jg-entry entry-visible"
-                                       href="${photo.url!}" >
-                                        <img  src="${photo.url!}" data-src="${photo.url!}" alt="${photo.name!}"  />
+                                       href="${photo.url!}">
+                                        <img src="${photo.url!}" data-src="${photo.url!}" alt="${photo.name!}"/>
                                         <p class="has-text-centered is-size-6 caption">${photo.name}</p>
                                     </a>
                                 </#list>
@@ -44,8 +40,9 @@
 
                 </div>
             </div>
-            <#include "module/footer.ftl">
         </main>
+        <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+        <script src="${static!}/assets/media/scripts/gallery.js"></script>
     </div>
-    </body>
 </@layout>

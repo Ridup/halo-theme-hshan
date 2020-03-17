@@ -1,10 +1,8 @@
 <#include "module/macro.ftl">
 <@layout title="${settings.achieve_title!'归档'} | ${options.blog_title!}" keywords="${options.seo_keywords!}" description="${options.seo_description!}">
 
-    <body class="tag-template">
     <div id="page" class="site">
-        <#include "module/header.ftl">
-        <main class="site-main">
+        <main class="site-main" id="main">
             <div class="site-content">
 
                 <header class="bg-cover page-header">
@@ -60,7 +58,6 @@
                 </div>
             </div>
         </main>
-        <#include "module/footer.ftl">
+        <#include "module/common.ftl">
     </div>
-    </body>
 </@layout>

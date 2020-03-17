@@ -155,10 +155,78 @@
         </#if>
 
         <title>${title}</title>
+
     </head>
-    <#nested >
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+    <body>
     <#include "script.ftl">
+    <#include "header.ftl">
+    <#include "comment.ftl">
+    <#nested >
+    <#include "footer.ftl">
+
+    </body>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script>
+
+    <script type="text/javascript">
+
+        var pjax = new Pjax({
+            elements: 'a[href]:not([href^="#"])', // default is "a[href], form[action]"
+            cacheBust: false,
+            debug: false,
+            selectors: ["title", "#page"]
+        });
+        //在Pjax请求开始后触发
+        document.addEventListener('pjax:send', function () {
+            // $('body').append('<div id="material-loading-cover" class="material-loading-dom animated slideInDown"><svg id="material-loading" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div>');
+            //
+            // window.removeEventListener('scroll', scollTocbot());
+        });
+
+
+
+        //在Pjax请求完成后触发
+        document.addEventListener('pjax:complete', function () {
+            // $('body').attr('class', $('#material-main').data('class'));
+            $('script[data-pjax]').each(function () {
+                $(this).parent().append($(this).remove());
+            });
+
+            load()
+
+            nodeMode()
+
+            // $('#material-loading-cover').remove();
+            if (typeof _hmt !== 'undefined') {
+                // support 百度统计
+                _hmt.push(['_trackPageview', location.pathname + location.search]);
+            }
+            if (typeof ga !== 'undefined') {
+                // support google analytics
+                ga('send', 'pageview', location.pathname + location.search);
+            }
+        });
+
+        //在Pjax请求成功后触发
+        document.addEventListener('pjax:success', function () {
+
+        });
+
+        //Pjax请求失败后触发，请求对象将作为一起传递event.options.request
+        document.addEventListener('pjax:error', function () {
+            bar('系统出现问题，请手动刷新一次', '3000');
+        });
+        //搜索事件处理
+        $(document).on('submit', '.form-group', function (e) {
+            e.preventDefault(); // 去除搜索框默认事件
+            var site = document.location.origin,
+                val = $('.top-nav-search').val(),
+                search = site + '/?s=' + val;
+            pjax.loadUrl(search);
+        });
+    </script>
     </html>
 </#macro>
 

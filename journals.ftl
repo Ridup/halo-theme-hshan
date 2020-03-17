@@ -1,10 +1,7 @@
 <#include "module/macro.ftl">
 <@layout title="${settings.jounarls_title!'日志'} | ${options.blog_title!}" keywords="${options.seo_keywords!}" description="${options.seo_description!}">
-    <body class="links-template">
     <div id="page" class="site">
-
-        <#include "module/header.ftl">
-        <main class="site-main">
+        <main class="site-main" id="main">
             <div class="site-content">
                 <header class="bg-cover page-header">
                     <#if settings.journals_patternimg?? && settings.journals_patternimg!=''>
@@ -25,12 +22,15 @@
                 <div id="tree-hole">
                     <ol class="comment-list">
                         <#list journals.content as journal>
-                            <li id="li-comment-611" class="tree-hole-body tree-hole-<#if (journal_index % 2)==0>odd<#else>even</#if>">
+                            <li id="li-comment-611"
+                                class="tree-hole-body tree-hole-<#if (journal_index % 2)==0>odd<#else>even</#if>">
                                 <div id="comment-611">
-                                    <img class="avatar" src="${user.avatar!}" alt="${user.nickname!}" width="40" height="40">
+                                    <img class="avatar" src="${user.avatar!}" alt="${user.nickname!}" width="40"
+                                         height="40">
                                     <div class="tree-hole-box">
                                         <div class="tree-hole-author">
-                                            <a href="${context!}" rel="external nofollow">${user.nickname}</a> ${journal.createTime?string('yyyy年MM月dd日')}
+                                            <a href="${context!}"
+                                               rel="external nofollow">${user.nickname}</a> ${journal.createTime?string('yyyy年MM月dd日')}
                                         </div>
                                         <p>${journal.content!}</p>
                                     </div>
@@ -51,20 +51,24 @@
                                         </li>
                                     <#else>
                                         <li class="prev">
-                                            <a href="${context!}/journals/page/${journals.number}"><i class="fa fa-angle-left fa-lg"></i></a>
+                                            <a href="${context!}/journals/page/${journals.number}"><i
+                                                        class="fa fa-angle-left fa-lg"></i></a>
                                         </li>
                                     </#if>
                                 </#if>
                                 <#list rainbow as r>
                                     <#if r == journals.number+1>
-                                        <li class="current"><a href="${context!}/journals/page/${journals.number+1}">${journals.number+1}</a></li>
+                                        <li class="current"><a
+                                                    href="${context!}/journals/page/${journals.number+1}">${journals.number+1}</a>
+                                        </li>
                                     <#else>
                                         <li><a href="${context!}/journals/page/${r}">${r}</a></li>
                                     </#if>
                                 </#list>
                                 <#if journals.hasNext()>
                                     <li class="next">
-                                        <a href="${context!}/journals/page/${journals.number+2}"><i class="fa fa-angle-right fa-lg"></i></a>
+                                        <a href="${context!}/journals/page/${journals.number+2}"><i
+                                                    class="fa fa-angle-right fa-lg"></i></a>
                                     </li>
                                 </#if>
                             </ol>
@@ -73,7 +77,6 @@
                 </div>
             </div>
         </main>
-        <#include "module/footer.ftl">
+        <#include "module/common.ftl">
     </div>
-    </body>
 </@layout>

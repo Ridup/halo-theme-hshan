@@ -1,10 +1,10 @@
 <#macro comment target,type>
     <#if !post.disallowComment!false>
-        <script src="//cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js"></script>
+        <script data-pjax src="//cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js"></script>
         <#if settings.auto_night_mode>
-            <script src="//cdn.jsdelivr.net/gh/hshanx/halo-comment-normal@v1.0.0/dist/halo-comment.min.js"></script>
+            <script data-pjax src="//cdn.jsdelivr.net/gh/hshanx/halo-comment-normal@v1.0.0/dist/halo-comment.min.js"></script>
         <#else>
-            <script src="${options.comment_internal_plugin_js!'//cdn.jsdelivr.net/gh/hshanx/halo-comment-normal@v1.0.0/dist/halo-comment.min.js'}"></script>
+            <script data-pjax src="${options.comment_internal_plugin_js!'//cdn.jsdelivr.net/gh/hshanx/halo-comment-normal@v1.0.0/dist/halo-comment.min.js'}"></script>
         </#if>
         <section class="comments-area">
             <div class="inner" id="commentInner">
@@ -12,7 +12,7 @@
             </div>
         </section>
 
-        <script>
+        <script data-pjax type="text/javascript">
             function getLocalStorage(key) {
                 var exp = 60 * 60 * 1000; // 一个小时的秒数
                 if (localStorage.getItem(key)) {

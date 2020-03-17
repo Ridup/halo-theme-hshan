@@ -1,9 +1,8 @@
 <#include "module/macro.ftl">
 <@layout title="${options.blog_title!} | 分类：${category.name}" keywords="${options.seo_keywords!}" description="${options.seo_description!}">
-    <body class="category-template">
     <div id="page" class="site">
-        <#include "module/header.ftl">
-        <main class="site-main">
+
+        <main class="site-main" id="main">
             <div class="site-content">
                 <header class="bg-cover page-header">
                     <#if settings.categories_patternimg?? && settings.categories_patternimg!=''>
@@ -38,11 +37,13 @@
                         <a href="${context!}">PAGE ${posts.number + 1} OF ${posts.totalPages!} </a>
                     </span>
                         <#if posts.hasPrevious()>
-                            <a class="newer-posts arrow-left" href="${context!}/categories/${category.slugName!}/page/${posts.number}"><span
+                            <a class="newer-posts arrow-left"
+                               href="${context!}/categories/${category.slugName!}/page/${posts.number}"><span
                                         class="screen-reader-text"></span></a>
                         </#if>
                         <#if posts.hasNext()>
-                            <a class="older-posts arrow-right" href="${context!}/categories/${category.slugName!}/page/${posts.number+2}"><span
+                            <a class="older-posts arrow-right"
+                               href="${context!}/categories/${category.slugName!}/page/${posts.number+2}"><span
                                         class="screen-reader-text"></span></a>
                         </#if>
                     </div>
@@ -50,11 +51,6 @@
 
             </div>
         </main>
-
-        <#include "module/footer.ftl">
-
+        <#include "module/common.ftl">
     </div>
-
-
-    </body>
 </@layout>
